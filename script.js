@@ -1,17 +1,19 @@
+'use strict';
+
 document.addEventListener('DOMContentLoaded', function () {
-  const currentDateElement = document.getElementById('current-date');
-  const twelveWeeksAgoElement = document.getElementById('twelve-weeks-ago');
+  const calculateBtn = document.getElementById('calculate-btn');
+  const resultElement = document.getElementById('result');
+  const additionalInfoElement = document.getElementById('additional-info');
 
   const currentDate = new Date();
   const twelveWeeksAgo = new Date(currentDate);
   twelveWeeksAgo.setDate(twelveWeeksAgo.getDate() - (12 * 7));
 
-  currentDateElement.textContent = formatDate(currentDate);
-  twelveWeeksAgoElement.textContent = formatDate(twelveWeeksAgo);
+  const currentDateFormatted = formatDate(currentDate);
+  const twelveWeeksAgoFormatted = formatDate(twelveWeeksAgo);
 
-  const calculateBtn = document.getElementById('calculate-btn');
-  const resultElement = document.getElementById('result');
-  const additionalInfoElement = document.getElementById('additional-info');
+  const additionalInfo = `Today's date is ${currentDateFormatted}, all Response Submissions dated ${twelveWeeksAgoFormatted} or earlier will result in a decision term of six weeks.`;
+  additionalInfoElement.textContent = additionalInfo;
 
   calculateBtn.addEventListener('click', function () {
     const judgmentDate = new Date(document.getElementById('judgment-date').value);

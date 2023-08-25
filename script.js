@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const calculateBtn = document.getElementById('calculate-btn');
   const resultElement = document.getElementById('result');
-  const currentDate = new Date();
 
   calculateBtn.addEventListener('click', function () {
     const judgmentDate = new Date(document.getElementById('judgment-date').value);
@@ -20,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     resultElement.textContent = result;
 
+    const currentDate = new Date();
     const twelveWeeksAgo = new Date(currentDate);
     twelveWeeksAgo.setDate(twelveWeeksAgo.getDate() - (12 * 7));
 

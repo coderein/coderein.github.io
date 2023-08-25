@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const calculateBtn = document.getElementById('calculate-btn');
   const resultElement = document.getElementById('result');
+  const currentDate = new Date();
 
   calculateBtn.addEventListener('click', function () {
     const judgmentDate = new Date(document.getElementById('judgment-date').value);
@@ -18,5 +19,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     resultElement.textContent = result;
+
+    const twelveWeeksAgo = new Date(currentDate);
+    twelveWeeksAgo.setDate(twelveWeeksAgo.getDate() - (12 * 7));
+
+    const additionalInfo = `Today's date is ${formatDate(currentDate)}, all Response Submissions dated ${formatDate(twelveWeeksAgo)} or earlier will result in a decision term of six weeks.`;
+
+    const additionalInfoElement = document.createElement('p');
+    additionalInfoElement.textContent = additionalInfo;
+
+    resultElement.appendChild(additionalInfoElement);
   });
+
+  function formatDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  }
 });

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const calculateBtn = document.getElementById('calculate-btn');
   const resultElement = document.getElementById('result');
+  const additionalInfoElement = document.getElementById('additional-info');
 
   calculateBtn.addEventListener('click', function () {
     const judgmentDate = new Date(document.getElementById('judgment-date').value);
